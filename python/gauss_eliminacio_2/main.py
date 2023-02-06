@@ -61,13 +61,5 @@ for i in range(sorhossz):
 kiirMatrix(matrix)
 
 
-eredmeny=[
-    [1,0,0,32],
-    [0,1,0,54],
-    [0,0,1,12]
-]
-
-
-
 
 
