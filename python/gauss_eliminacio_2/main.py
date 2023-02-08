@@ -21,7 +21,7 @@ matrix=[
 ]
 sorhossz=len(matrix[0])
 
-
+#############################
 elsoelem=matrix[0][0]
 for i in range(sorhossz):
     matrix[0][i]/=elsoelem
@@ -33,7 +33,7 @@ for i in range(sorhossz):
 elsoelem=matrix[2][0]
 for i in range(sorhossz):
     matrix[2][i]-=elsoelem*matrix[0][i]
-
+############################################
 elsoelem=matrix[1][1]
 for i in range(sorhossz):
     matrix[1][i]/=elsoelem
@@ -45,7 +45,7 @@ for i in range(sorhossz):
 elsoelem=matrix[2][1]
 for i in range(sorhossz):
     matrix[2][i]-=elsoelem*matrix[1][i]
-
+###############################################
 elsoelem=matrix[2][2]
 for i in range(sorhossz):
     matrix[2][i]/=elsoelem
