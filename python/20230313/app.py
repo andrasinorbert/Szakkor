@@ -2,18 +2,17 @@
 from flask import Flask
 import defaults as DEF
 import database_funcs as DB
+
+# futtatas: python -m flask run
+
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello, Flask!"
+    return "HOME"
 
-@app.route("/valami/")
-def vmi():
-    return "<p style='color:red'>SziaUram!</p>"
 
 @app.route("/lux/<lux_ertek>")
 def lux_feltolt(lux_ertek):
-
-    
-    return "<p style='color:red'>SziaUram!</p>"
+    DB.insert(lux_ertek)
+    return "<p style='color:red'>Feltöltve</p>"
