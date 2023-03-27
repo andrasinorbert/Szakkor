@@ -1,6 +1,6 @@
 # FORTH language
 
-```f
+```Forth
 (LARGE LETTER F)
 : STAR 42 EMIT;             (a csillag karakter ANSI Tábla szerint)
 : STARS 0 DO STAR LOOP;     (hányszor ismételje a STAR-t)
@@ -8,6 +8,7 @@
 : BLIP MARGIN STAR;
 : BAR MARGIN 5 STARS;
 : F BAR BLIP BAR BLIP BLIP CR;
+F
 ```
 
 Eredmény:
@@ -30,7 +31,7 @@ m: return
 
 | CODE | Paraméter | magyarázat |
 | --- | :---: | --- |
-| : <simbol> definition; | ( -- ) | szimbolum megadás |
+| : {simbol} definition; | ( -- ) | szimbolum megadás |
 | CR | ( -- ) | ujsor |
 | SPACES | ( n -- ) | n db space |
 | SPACE | ( -- ) | 1 db space |
@@ -50,9 +51,9 @@ Számolások:
 | --- | --- |
 | c(a+b) | cab+* |
 | (3a-b)/ 4 +c | 3a*b-4/c+ |
-| (0.5*ab)/100 | 1 2 / a * b* 100/ |
+| (0.5\*ab)/100 | 1 2 / a \* b* 100/ |
 | (n+1) /n | n 1 + n / |
-| x( 7x + 5) | 7x*5+x* |
+| x( 7x+5) | 7x\*5+x* |
 
 Pl programok:
 1 yard = 36 inches
@@ -79,7 +80,7 @@ deeee megcsinálható igy is:
 10 YARDS 2 FEET + 9 INCHES + .
 ```
 
-10 * 36 + 2*12 + 9 = 360+24+9 = 393
+10 \* 36 + 2*12 + 9 = 360+24+9 = 393
 
 22 4 /MOD . .
 Ez kiírja, hogy "5 2"
@@ -130,42 +131,61 @@ Teljes stack kiiratása:
 Feladatok:
 
 1) a b c -> c b a
-    SWAP ROT
+
+    ```Forth
+        SWAP ROT
+    ```
 
 2) OVER func without OVER
+
     a b -> a b a
     SWAP DUP ROT ROT
     ba   baa aab aba
 
 3) Write opposite `ROT` function: `<ROT` ami ezt csinálja: a b c -> c a b
-    `:<ROT ROT ROT;`
+
+    ```Forth
+        `:<ROT ROT ROT;`
+    ```
 
 4) (n+1)/n (n -- result)
-    :negyes DUP 1 + SWAP / ;
+
+    ```Forth
+        :negyes DUP 1 + SWAP / ;
+    ```
 
 5) x(7x+5) ( x -- result)
-    :otos DUP 7*5+*;
+
+    ```Forth
+        :otos DUP 7*5+*;
+    ```
 
 6) 9a^2 - ba ( a b -- result)
-    :hatos OVER DUP * 9* ROT ROT *-
 
-Számolás:
-    a b
-    over
-    a b a 
-    dup
-    a b a a
-    *
-    a b a^2
-    9*
-    a b a^2*9
-    rot
-    rot
-    a^2*9 a b 
-    *-
+    ```Forth
+        :hatos OVER DUP * 9* ROT ROT *-
+    ```
+
+    Számolás:
+        a b
+        over
+        a b a
+        dup
+        a b a a
+        *
+        a b a^2
+        9*
+        a b a^2*9
+        rot
+        rot
+        a^2*9 a b
+        *-
 
 Megoldás:
-    OVER 9* SWAP -*
+
+```Forth
+OVER 9* SWAP -*
+```
 
     a b a*9
     a a*9 b
@@ -177,5 +197,3 @@ Megoldás:
 Comment:
 
     () -jelbe kell tenni
-
-
